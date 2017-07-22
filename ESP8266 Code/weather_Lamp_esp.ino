@@ -50,6 +50,8 @@ int login_counter = 20;                               // Number of login tries
 const char* ssidAP = "esp8266";
 const char* passwordAP = "****";
 
+String cookieID = "*****"
+
 String username;
 String pass;
 
@@ -114,7 +116,7 @@ bool is_authentified(){                               // COOKIE CHECK
   if (server.hasHeader("Cookie")){
     String cookie = server.header("Cookie");
     //Serial.println(cookie);
-    if (cookie.indexOf("****") != -1) {
+    if (cookie.indexOf(cookieID) != -1) {
       return true;
     }
   }
@@ -301,14 +303,14 @@ void handleWeatherSettings() {                                                  
 
 void handleLogin(){                                   // LOGIN PAGE
   if (server.hasArg("DISCONNECT")){
-    String header = "HTTP/1.1 301 OK\r\nSet-Cookie: dsAjw9da1=; Expires=Thu, 01-Jan-1970 00:00:00 GMT\r\nLocation: /login\r\nCache-Control: no-cache\r\n\r\n";
+    String header = "HTTP/1.1 301 OK\r\nSet-Cookie: " + cookieID + "; Expires=Thu, 01-Jan-1970 00:00:00 GMT\r\nLocation: /login\r\nCache-Control: no-cache\r\n\r\n";
     server.sendContent(header);
     return;
   }
   
   if (server.hasArg("USERNAME") && server.hasArg("PASSWORD")){
     if (server.arg("USERNAME") == username && server.arg("PASSWORD") == pass){                                              // USER AND PASS
-      String header = "HTTP/1.1 301 OK\r\nSet-Cookie: dsAjw9da1=; Expires=Wed, 09-Jun-2021 10:18:14 GMT\r\nLocation: /\r\nCache-Control: no-cache\r\n\r\n";
+      String header = "HTTP/1.1 301 OK\r\nSet-Cookie: " + cookieID + "; Expires=Wed, 09-Jun-2021 10:18:14 GMT\r\nLocation: /\r\nCache-Control: no-cache\r\n\r\n";
       server.sendContent(header);
       return;
     }
