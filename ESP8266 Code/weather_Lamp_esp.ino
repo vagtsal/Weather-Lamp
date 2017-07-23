@@ -6,7 +6,7 @@
 // Creates an access point to submit network settings (ssid "esp8266", pass: "****", address page: 192.168.4.1)
 // Creates a web server with a simple html interface to control smart lamp. Password protected (admin/admin default)
 // Sends commands to arduino mini through serial connection to control led strip
-// Downloads weather forecast (24h after) from openweather.
+// Downloads weather forecast from openweather.
 // Stores current state in EEPROM
 
 #include <ESP8266WiFi.h>
