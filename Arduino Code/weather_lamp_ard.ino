@@ -506,8 +506,6 @@ void setup() {
   effect = EEPROM.read(EFFECT_ADDR);
   weather = EEPROM.read(WEATHER_ADDR);
   
-  change_state("setup");
-  
   Serial.begin(115200);
   inputString.reserve(200);
 }
