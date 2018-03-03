@@ -50,7 +50,7 @@ int login_counter = 20;                               // Number of login tries
 const char* ssidAP = "esp8266";
 const char* passwordAP = "****";
 
-String cookieID = "*****"
+String cookieID = "*****";
 
 String username;
 String pass;
